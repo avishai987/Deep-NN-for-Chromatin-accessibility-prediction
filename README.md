@@ -27,7 +27,7 @@ Deep Learning allows the network to gradually learn abstract representations of 
 We considered other options like CNN (Convolutional Neural Network), but these are better suited for data structured spatially or temporally (like images or sequences).
 In our case, each cell is represented as a **one-dimensional vector** of gene expression, without spatial structure. Therefore, CNN is not suitable for the data structure, and a **Fully Connected Neural Network** is the natural and simpler choice.
 
-![What Is a Neural Network?](images/Picture4.jpg)
+![What Is a Neural Network?](images/Picture3.jpg)
 
 ---
 # ⚠️ Key Challenges
@@ -58,7 +58,7 @@ Training was performed on an **NVIDIA L4 GPU** using Python and Keras over **50 
 # 🧠 Network Architecture
 The network was a simple fully connected network:
 
-![תמונה 4](תמונה4.jpg)
+![Pic4](images/Picture4.jpg)
 
 ---
 # Activation Functions
@@ -66,24 +66,24 @@ The network was a simple fully connected network:
 **Sigmoid:** An activation function that returns a value between 0 and 1—often used in probability estimation.
 **Final Output:** A vector of size **500** for each cell, representing the probability of an open peak (1) at each locus.
 
-![https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Swish.svg/250px-Swish.svg.png](images/Picture5.jpg)
+![swish](images/Picture5.jpg)
 
-![תמונה 8](תמונה8.jpg)
+![sigmoid](images/Picture6.jpg)
 
 ---
-![תמונה 4](תמונה4.jpg)
+
 # ⚙️ Model Training
 **Batch size:** In each training step, the model only sees 32 examples from the total data—learning gradually. This improves the stability and efficiency of the training.
 I used a variety of optimizers, and ultimately chose **RMSProp**, which showed the best performance.
 RMSProp is suitable for noisy data or data with inconsistent gradients, and dynamically adjusts the learning rate. It retains information about past gradients similar to Momentum but also computes an exponential moving average of the squared gradients.
-
+![RMSprop](images/Picture7.jpg)
 ---
 # 📉 Loss Functions
 To handle the imbalanced and sparse data, I used a combination of two functions:
 **SigmoidFocalCrossEntropy** - A loss function that focuses on "hard" examples and partially ignores "easy" (frequent) ones—like the zeros in the ATAC matrix. This improves sensitivity to rare events.
 **Dice Loss** - Similar to the F1 score. It is designed to maximize the overlap between truth and prediction, making it highly suitable for **sparse data**.
 
-![https://miro.medium.com/v2/resize:fit:1047/1*QumkIISngfiVg3sm_gWtCA.png](images/Picture4.jpg)
+![Dice loss](images/Picture8.jpg)
 
 ---
 # 📈 Performance Evaluation Metrics
@@ -111,8 +111,7 @@ We achieved a PR AUC of approximately **0.18**, which is considered relatively l
 
 Therefore, a value of $\approx 0.18$ shows that the model **did learn something**—even if not particularly impressive performance.
 
-![תמונה 4](תמונה4.jpg)
-Random guess
+![performance](images/Picture9.jpg)
 
 ---
 # 📈 Performance
