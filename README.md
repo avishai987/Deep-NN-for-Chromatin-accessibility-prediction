@@ -4,6 +4,7 @@ Based on Gene Expression (scRNA-seq) using Deep Learning
 Avishai Wizel
 2025
 
+Analysis script can be found [here](scripts/06_NN.ipynb)
 ---
 # Introduction
 🎯 **Problem Definition**
