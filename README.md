@@ -111,7 +111,7 @@ We achieved a PR AUC of approximately **0.18**, which is considered relatively l
 
 Therefore, a value of $\approx 0.18$ shows that the model **did learn something**—even if not particularly impressive performance.
 
-![performance](images/Picture9.jpg)
+![performance](images/Picture9_2.jpg)
 
 ---
 # 📈 Performance
